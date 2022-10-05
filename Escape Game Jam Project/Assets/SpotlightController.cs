@@ -9,21 +9,21 @@ public class SpotlightController : MonoBehaviour
     private Vector3 mousePos;
     private Rigidbody2D rb;
     private Vector2 direction;
-    private float moveSpeed = 1000f;
 
     [SerializeField]
     private bool playerControlled;
 
-    [SerializeField]
-    private int ExtraSpotlights;
+    [Header("AI Spotlights")]
+    public Transform[] SpotlightPositions;
+    public int CurrentPos = 0;
+    public float moveSpeed;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); 
-        float x = Random.Range(0, 2) == 0 ? -1 : 1; 
-        float y = Random.Range(0, 2) == 0 ? -1 : 1;
-
-        rb.AddForce(new Vector2(10*Time.deltaTime*moveSpeed, 10*Time.deltaTime*moveSpeed));  
+        rb = GetComponent<Rigidbody2D>();
+        moveSpeed = 2.25f;
+        CurrentPos = Random.Range(0,SpotlightPositions.Length-1); 
+        GetPositions();
     }
 
     // Update is called once per frame
@@ -42,6 +42,19 @@ public class SpotlightController : MonoBehaviour
 
     void MoveSpotlight()
     {
+        transform.position = Vector2.MoveTowards(transform.position, SpotlightPositions[CurrentPos].position, moveSpeed*Time.deltaTime);
 
+        if(Vector2.Distance(transform.position, SpotlightPositions[CurrentPos].position) < 0.2f)
+        {
+            CurrentPos = Random.Range(0, SpotlightPositions.Length-1);
+        }   
+    }
+
+    void GetPositions()
+    {
+        for (int i = 0; i < SpotlightPositions.Length; i++)
+        {
+            SpotlightPositions[i] = GameObject.Find("Pos" +(i+1).ToString()).transform;
+        }
     }
 }

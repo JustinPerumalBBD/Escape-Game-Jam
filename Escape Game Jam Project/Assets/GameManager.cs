@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class GameManager : MonoBehaviour
     private GameObject NewMonster;
 
     private int RandomTargetSelection;
+
+    public Sprite TargetSprite;
+    public Image TargetImage;
 
     void Awake()
     {
@@ -42,11 +46,13 @@ public class GameManager : MonoBehaviour
                 CurrentTarget = Targets[i];
             }
         }
+
+        SetCurrentTarget();
     }
 
     private void SetCurrentTarget()
     {
-       //Get current targets sprite and logic
-       // CurrentTarget.GetComponent<SpriteRenderer>().image 
+       TargetSprite = CurrentTarget.GetComponent<SpriteRenderer>().sprite;
+       TargetImage.sprite = TargetSprite;
     }
 }
