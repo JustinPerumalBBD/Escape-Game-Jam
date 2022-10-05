@@ -4828,7 +4828,7 @@ GameObject:
   - component: {fileID: 2519521482517404974}
   - component: {fileID: 1142612494528656260}
   m_Layer: 0
-  m_Name: Spotlight
+  m_Name: Spotlight_Flicker
   m_TagString: Spotlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5030,7 +5030,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2519521482517404964}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: be00d80579062b04eb359c7dd499b012, type: 2}
   m_CullingMode: 0
