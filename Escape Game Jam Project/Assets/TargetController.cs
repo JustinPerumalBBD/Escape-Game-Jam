@@ -33,5 +33,8 @@ public class TargetController : MonoBehaviour
             Debug.Log("Click target");
             Destroy(this.gameObject);
         }    
+        else{
+            //GAME OVER
+        }
     }
 }

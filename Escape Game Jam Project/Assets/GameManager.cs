@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class GameManager : MonoBehaviour
 
     public Sprite TargetSprite;
     public Image TargetImage;
+
+    [Header("Timer Controls")]
+    [SerializeField]
+    private float CountDownTimer; 
+    public GameObject CountDownText;  
 
     void Awake()
     {
@@ -30,7 +36,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(CountDownTimer > 0)
+        {
+            CountDownTimer -= Time.deltaTime;
+            CountDownText.GetComponent<TextMeshProUGUI>().text = CountDownTimer.ToString("F0");
+        }
+
+        if(CountDownTimer <= 0)
+        {
+            CountDownTimer = 0;
+            Debug.Log("Times Up");
+        }
     }
     
     //Randomly places targets across level
