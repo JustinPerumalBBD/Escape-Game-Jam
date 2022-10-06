@@ -45,8 +45,7 @@ public class GameManager : MonoBehaviour
 
         if(CountDownTimer <= 0)
         {
-            CountDownTimer = 0;
-            Debug.Log("Times Up");
+            SceneManager.LoadScene("Game Over");
         }
     }
     
